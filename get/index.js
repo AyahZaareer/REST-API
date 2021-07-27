@@ -2,7 +2,7 @@ const peopleModel = require('./people.schema');
 
 exports.handler = async (event) => {
     try {
-        const id = event?.pathParamters?.id;
+        const id = event.pathParameters ? event.pathParameters.id : null;
         let data;
         if (id) {
             const result = await peopleModel.query('id').eq(id).exec();
